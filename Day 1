@@ -1,0 +1,125 @@
+LINUX:
+
+	-GRUB ->
+		It is a bootloader
+		Selects the kernel(os)
+
+	-Kernel interacts with the hardware(like a translator) => device drivers.
+
+	-In linux, everything is treated as a file system
+
+	-difference between process and job.
+		process:
+			program in execution
+			instance of the running program
+			has its own PID.
+		JOB:
+			individual or shell commands
+			has its own jobID
+
+	-notebook LM(AI)
+
+	-LINUX PROCESS ID - 1
+		INIT Process will gets loaded
+
+	-INIT PROCESS 
+		Services(each and every separate functionality) and system configuration.
+
+	-Boot process
+
+	-Device Drivers	 
+		It is the translator between the hardware and the kernel.
+
+	-process scheduling
+		- how to see or set the priority of the process
+			By changing the nice value.
+
+		- debugging in the priority related issues:
+			use top command to check the priority and to check the cpu live usage.
+			check whether any process takes high cpu but it takes lower priority.
+			For debugging real-time process "chrt -p <PID>" command.
+
+		- nice value
+			-20(high priority) to +19(lowest priority)
+			0 => default
+			less nice value=>high priority, high nice value => less priority
+
+		- how to determine the execution time for each process(is there any algorithms etc....).
+			Time command is used to determine the execution time of each process
+			In LINUX the default scheduling technique is CFS.
+			CFS user vruntime to determine which process to go next.
+		
+	-memory management
+		- Aspects that need to be considered in Memory management.
+			Allocation and deallocation of memory when required and not required, protection, sharing etc...
+
+		- paging
+			It is the memory management technique.
+			Memory is divided into fixed size blocks that are pages(virtual memory) and page frames(physical memory).
+			Each page is mapped to the page frame in the page table.
+			The size of pages in all bits os is 4KB only. The page size and the system size is not related.
+
+		- what happens while loading the data from the rom to ram.
+			rom => non-volatile memory
+			ram => volatile memory
+			while loading data from rom to ram it will be done faster.
+
+		- what is 64-bit os or 32-bit os . Is it a page size?
+			No, the page size and the is bit is not even related to each other.
+
+		- general page size 4kb's then what is 64-bit 32 bit?
+			Both the system used 4KB page size.
+			It says the CPU and os of larger address space. 
+
+		- segmentation. did segmentation and paging are related?
+
+			| Feature          | Segmentation                | Paging                        |
+			| ---------------- | --------------------------- | ----------------------------- |
+			| Division type    | Logical (code, data, stack) | Fixed-size pages (e.g., 4 KB) |
+			| Size             | Variable                    | Fixed                         |
+			| Fragmentation    | External fragmentation      | Internal fragmentation        |
+			| Address format   | Segment + Offset            | Page number + Offset          |
+			| Access check     | Against segment limit       | Access rights per page        |
+			| Use in modern OS | Rarely used alone           | Widely used                   |
+
+			-In external fragmentation to overcome the unavailability of contiguous space in the memory some techniques can be used like best-fit, first-fit etc...
+			-Internal Fragmentation is has the pages of fixed size(4KB).
+
+	-Virtual File system
+		File system:
+			A file system is the software method or data structure that defines how files and directories are arranged, stored, named, accessed, and managed on a storage device 			(like HDD, SSD, USB, etc.).
+
+		VFS is the translator or abstraction layer between the file system and the user space. That is when the user requests the file , the file will be given to the user but the 	file system in the file presents is hidden.
+		once the user sends the request for a file to the system, then
+			1. sending the request open("/home/sanjuga/report.pdf")
+			2. The VFS receives the request, but it don't care whatever the file extension can be.
+			3. The vfs first breaks down the path, like 
+				/		=> root directory
+				home/		=> user directory
+				Sanjuga/	=> my folder
+				report.pdf	=> my requested file
+			4. Now VFS checks on which file system does the file was. It was on the /home => xfs
+			5. Now it asks the ext4 file system to fetch that file.
+
+			Folders created by us don't have its own file system. /home, /, /mnt/usb has its own file system types.
+
+
+	-Networking Subsystem
+	-Microservices Architecture
+	-ipc
+		- pipes
+		- named pipes
+		- ...
+	-Linux Memory Segments
+		Text Segment - Binaries will be loaded inside
+		Data segment - initialized static Global variables
+		BSS segment - uninitialized static Global variables
+		Heap segment - Dynamic memory allocation
+		Stack segment - function call stack
+	-Process control blocks
+	-Registers - used to store temporary results and address while running the programs.
+	-DB program counter and stack pointer
+	-Step by step explanation while running the command in the linux terminal.
+	-File system types(ex4 and xfs) in Linux
+		mounting and unmounting the file partition.
+		Mounting external hardware
