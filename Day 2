@@ -1,0 +1,100 @@
+whoami - use to show who have logged in currently
+man echo -  it give the details about the echo command
+man ls etc...
+
+how to print the previously printed echo data
+explore about echo $1.
+
+pwd - shows the home directory
+cd - change directory
+cd /
+cd -  => undo function
+cd ..
+mkdir
+touch => create a new file
+cat => used to print thing inside the file and to concatinate different files
+mv => to rename the file
+
+find => to find the file with a particular in the large number of files(find . -type f -name '*h1')=> .-> start from the current directory
+
+by default what will be the file extension?
+
+vi => editor
+:qa! => to exit the vi
+
+rm -r sample = > to delete the complete directory.
+ls -l explain what is d in the output.
+   if it is a folder then it shows d in the permission like rw.
+ output of ls -l:
+	-rw-rw-r-- 1 sanjuga sanjuga 3 Jun 10 21:03 h1
+	There are two sanjuga's one refers to the owner and another refers to the group.
+	3 => File size
+Grep:
+grep -i "hi" hello
+
+-i => ignore case
+-l => lists only the file names if the pattern matches
+-n => show line number if the pattern matches
+-r => recursive search, searches in all the files in the directory
+-v => print the lines that the match not found 	
+-c => count the no.of matches found
+
+Regular exp:
+1. rm try* => to delete file name starts with try
+2. rm * => remove all the files in the directory
+3. grep => used for pattern finding "grep -i "new" filename"
+4. chmod => change mode permissions like -r,-w
+       chmod u-r filename => there is not read permission for this file
+             u+rwx =>sets all permissions only for the user	
+		 a+rwx  => says for all users set all the permissions
+		 g+r    => it is group it sets only read permission for group
+		 o+rwx  => it sets the permission for others
+   u=> user
+   g=> group
+   o=> others
+
+5. using numbers: chmod 777 filename
+
+	 r w x
+user   1 0 1 =>5
+group  0 1 1 =>3
+others 1 1 1 =>7
+chmod 537 <filename>
+
+other commands:
+
+1. ps		=> shows the process running in the current terminal
+2. ps -A	=> shows all the process related to the current terminal including the background process
+3. top => the real time process monitoring
+4. df(disk free) => gives the details about the file system (-h=> readable format)
+5. du(disk usage)
+	du -s filename =>size of the whole directory
+	du -sh filename => size of the whole directory in the readable format
+6. sudo(super user do)
+ 	used to override the permissions
+7. echo "sample" > file1 => it will overwrite the old data with the new data in the file
+8. echo "sample" >> file1 => it will add the lastly given data in the file
+9. pipe ps -A | grep "putty" 
+10. head
+11. tail
+12. Command to see the parent process of the process "ps -aef"
+13. awk
+	for filtering
+14 zombie process
+	A zombie process remain in the table until its parent is alive and its exit status is not gets collected. If it's parent process dies first itself then the child process gets cleared by init immediately.
+
+	how created
+		It parent doesn't call wait
+	where created
+		It is created by the parent process
+	who is the parent or owner
+		The parent process the creates the child are the parent of the zombie. If the parent dies then the init is the parent of the zombie. 
+
+
+jobs: creation, practical example etc..., how make the job as background and foreground, check about signals
+1. jobs -p
+2. ls -lrt &
+
+
+
+
